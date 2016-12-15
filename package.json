@@ -1,0 +1,24 @@
+{
+  "name": "gulpbabel",
+  "version": "1.0.0",
+  "description": "Testing Gulp with Babel",
+  "main": "index.js",
+  "dependencies": {
+    "babel-core": "^6.20.0",
+    "babel-preset-es2015": "^6.18.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-sass": "^3.0.0",
+    "gulp-sourcemaps": "^1.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Babel",
+    "Gulp"
+  ],
+  "author": "Alan J. Fitzpatrick",
+  "license": "ISC"
+}

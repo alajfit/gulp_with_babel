@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.css"],"names":[],"mappings":"AAAA;EACE,UAAU;EACV,WAAW;EACX,eAAe;EACf,uBAAuB,EAAE","file":"main.css","sourcesContent":["* {\n  margin: 0;\n  padding: 0;\n  border: 0 none;\n  box-sizing: border-box; }\n"]}
