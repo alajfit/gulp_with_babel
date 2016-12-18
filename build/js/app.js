@@ -40,6 +40,7 @@ var sayHi = function sayHi(name) {
   return "Hello " + name;
 };
 
+// Import style sheet
 (function () {
 
     runAlert();

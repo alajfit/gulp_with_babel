@@ -6,6 +6,7 @@ const $ = gulpLoadPlugins();
 
 import { rollup } from 'rollup';
 import babel from 'rollup-plugin-babel';
+import eslint from 'rollup-plugin-eslint';
 import postcss from 'rollup-plugin-postcss';
 
 import settings from './src/gulp/gulp.options';
@@ -27,6 +28,11 @@ gulp.task('scripts', () => {
         plugins: [
             postcss({
                 extensions: [ '.css' ]
+            }),
+            eslint({
+                exclude: [
+                    'src/css/**',
+                ]
             }),
             babel({
                 presets: [
