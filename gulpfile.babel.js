@@ -4,64 +4,30 @@ import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 const $ = gulpLoadPlugins();
 
-import { rollup } from 'rollup';
-import babel from 'rollup-plugin-babel';
-import eslint from 'rollup-plugin-eslint';
-import postcss from 'rollup-plugin-postcss';
-
 import settings from './src/gulp/gulp.options';
 import { loadTask } from './src/gulp/gulp.helpers';
 
-gulp.task('styles', () => {
-    return gulp.src(settings.paths.sass.src)
-        .pipe($.plumber())
-        .pipe($.sass())
-        .pipe($.sourcemaps.init())
-        .pipe($.autoprefixer())
-        .pipe($.sourcemaps.write('.'))
-        .pipe(gulp.dest(settings.paths.sass.build));
+// Allows us to log information to the terminal with color association
+var log = {
+	info: function(msg) { $.util.log($.util.colors.blue(msg)) },
+	error: function(msg) { $.util.log($.util.colors.red(msg)) }
+};
+
+// Loading Tasks from the sub gulp folder within our src
+loadTask('styles')(gulp, $, log, {
+    src: settings.paths.sass.src,
+    dest: settings.paths.sass.build,
+    useSourceMaps: true,
+    uglifiy: false
+});
+loadTask('scripts')(gulp, $, log, {
+    src: settings.paths.js.src,
+    dest: settings.paths.js.build
+});
+loadTask('watchers')(gulp, $, log, {
+    sassSrc: settings.paths.sass.src,
+    jsSrc: settings.paths.js.src
 });
 
-gulp.task('scripts', () => {
-    return rollup({
-        entry: settings.paths.js.src,
-        plugins: [
-            postcss({
-                extensions: [ '.css' ]
-            }),
-            eslint({
-                exclude: [
-                    'src/css/**',
-                ]
-            }),
-            babel({
-                presets: [
-                    [
-                        'es2015', {
-                            'modules': false
-                        }
-                    ]
-                ],
-                sourceMaps: true,
-                babelrc: false,
-                exclude: 'node_modules/**'
-            })
-        ]
-    })
-    .then(bundle => {
-        return bundle.generate({
-            format: 'umd',
-            moduleName: 'myModuleName',
-            sourceMap: true,
-            globals: {
-
-            }
-        });
-    })
-    .then(gen => {
-        return $.file('app.js', gen.code, { src: true })
-            .pipe(gulp.dest(settings.paths.js.build));
-    });
-});
-
-gulp.task('default', ['styles', 'scripts']);
+// Default task ran by Gulp
+gulp.task('default', ['styles', 'scripts', 'watchers']);

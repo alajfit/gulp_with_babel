@@ -1,7 +1,9 @@
+// Allows us to load a task from the gulp folder
 var loadTask = function (pluginName) {
-    return require('./src/gulp/gulp.' + pluginName + '.js');
+    return require('./gulp.' + pluginName + '.js');
 };
 
+// All helpers passed back as an object
 const helpers = {
     loadTask: loadTask
 };
