@@ -14,6 +14,6 @@ import greeting from './modules/mod2';
     console.log(runAlert());
     console.log(greeting('Alan'));
 
-    var para = $('<p/>').html('This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph.');
+    var para = $('<p/>').html('This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. New');
     $('body').append(para);
 })();

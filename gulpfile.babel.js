@@ -24,10 +24,12 @@ loadTask('scripts')(gulp, $, log, {
     src: settings.paths.js.src,
     dest: settings.paths.js.build
 });
-loadTask('watchers')(gulp, $, log, {
-    sassSrc: settings.paths.sass.src,
-    jsSrc: settings.paths.js.src
+
+gulp.task('watch', function() {
+    log.info('Watching the source files');
+    gulp.watch(settings.paths.sass.all, ['styles', 'scripts']);
+    gulp.watch(settings.paths.js.all, ['scripts']);
 });
 
 // Default task ran by Gulp
-gulp.task('default', ['styles', 'scripts', 'watchers']);
+gulp.task('default', ['styles', 'scripts', 'watch']);

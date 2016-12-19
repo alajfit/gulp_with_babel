@@ -8,12 +8,14 @@ const basePaths = {
     build: 'build'
 };
 const sassPaths = {
-    src: `${basePaths.src}/css/sass/**.*`,
-    build: `${basePaths.src}/css`
+    src: `${basePaths.src}/css/sass/main.scss`,
+    build: `${basePaths.src}/css`,
+    all: `${basePaths.src}/css/sass/**/*.scss`
 };
 const jsPaths = {
     src: `${basePaths.src}/scripts/app.js`,
-    build: `${basePaths.build}/js`
+    build: `${basePaths.build}/js`,
+    all: `${basePaths.src}/scripts/**/*.js`
 };
 
 // settings object is built here
@@ -26,15 +28,17 @@ const settings = (function () {
         paths: {
             base: {
                 src: basePaths.src,
-                build: basePaths.build
+                build: basePaths.build,
             },
             sass: {
                 src: sassPaths.src,
-                build: sassPaths.build
+                build: sassPaths.build,
+                all: sassPaths.all
             },
             js: {
                 src: jsPaths.src,
-                build: jsPaths.build
+                build: jsPaths.build,
+                all: jsPaths.all
             }
         }
     }

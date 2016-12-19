@@ -17,7 +17,7 @@ function __$styleInject(css, returnValue) {
   head.appendChild(style);
   return returnValue;
 }
-__$styleInject("* {\n  margin: 0;\n  padding: 0;\n  border: 0 none;\n  box-sizing: border-box; }\n\n/*# sourceMappingURL=main.css.map */\n", undefined);
+__$styleInject("* {\n  margin: 0;\n  padding: 0;\n  border: 0 none;\n  box-sizing: border-box; }\n\nbody {\n  width: 100%;\n  height: 100%;\n  font-family: sans-serif; }\n\n/*# sourceMappingURL=main.css.map */\n", undefined);
 
 var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -10279,7 +10279,7 @@ var sayHi = function sayHi(name) {
     console.log(runAlert());
     console.log(sayHi('Alan'));
 
-    var para = jquery('<p/>').html('This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph.');
+    var para = jquery('<p/>').html('This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. New');
     jquery('body').append(para);
 })();
 
